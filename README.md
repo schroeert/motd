@@ -11,3 +11,5 @@ Including network settings, mem and disk overview.
 
 It generates colored output based on system state. (green or red)
 
+[[https://github.com/usommer/motd/blob/master/motd.jpg]]
+
