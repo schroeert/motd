@@ -13,5 +13,10 @@ It generates colored output based on system state. (green or red)
 
 This script could also be useful in combination with conky.
 
+
+
+
+
+
 ![alt text](https://github.com/usommer/motd/blob/master/motd2.jpg)
 
