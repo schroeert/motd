@@ -13,6 +13,9 @@ It generates colored output based on system state. (green or red)
 
 This script could also be useful in combination with conky.
 
+Make sure you install column from bsdmainutils package.
+(apt install bsdmainutils)
+
 
 
 
