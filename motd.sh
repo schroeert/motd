@@ -6,17 +6,20 @@
 # 
 # Uwe Sommer (uwe@usommer.de)
 # 12/2017
+# https://github.com/netcon-consulting/motd
+#
+# schroeert
+# 03/2020 - Added Fail2Ban and ufw
 ####################################################################
-## ASCII Art generated Logo
+## ASCII Art generated Logo - http://patorjk.com/software/taag/#p=display&f=Slant&t=Nextcloud
 ## \e[0;93m = yellow
 echo ""
 echo -e "\e[0;93m"
-echo "   ███╗   ██╗███████╗████████╗ ██████╗ ██████╗ ███╗   ██"
-echo "   ████╗  ██║██╔════╝╚══██╔══╝██╔════╝██╔═══██╗████╗  ██"
-echo "   ██╔██╗ ██║█████╗     ██║   ██║     ██║   ██║██╔██╗ ██"
-echo "   ██║╚██╗██║██╔══╝     ██║   ██║     ██║   ██║██║╚██╗██"
-echo "   ██║ ╚████║███████╗   ██║   ╚██████╗╚██████╔╝██║ ╚████"
-echo "   ╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝  ╚═══"
+echo "    _   __          __       __                __"
+echo "   / | / /__  _  __/ /______/ /___  __  ______/ /"
+echo "  /  |/ / _ \| |/_/ __/ ___/ / __ \/ / / / __  /"
+echo " / /|  /  __/>  </ /_/ /__/ / /_/ / /_/ / /_/ /"
+echo "/_/ |_/\___/_/|_|\__/\___/_/\____/\__,_/\__,_/"
 echo -e "\e[0m"
 echo ""
 ####################################################################
@@ -25,7 +28,6 @@ function infos()
 {
 ## yellow hostname
 echo -e "Hostname: \e[1;93m$(hostname)\e[0m"
-echo "Wan-Ip: $(dig +short myip.opendns.com @resolver1.opendns.com)"
 echo "lokal-IP: $(hostname -I)"
 echo "Netmask: $(route |tail -1 | awk '{ print $3 }')"
 echo "Gateway: $(netstat -rn | grep 0.0.0.0 | awk '{ print $2 }' | grep -v '0.0.0.0')"
@@ -92,7 +94,20 @@ echo -e "\e[1mInfos:\e[0m"
 infos |column -t
 ## finish bold output
 echo ""
+####################################################################
+## Fail2Ban
+## bold output
+echo -e "\e[1mFail2Ban:\e[0m"
+echo $(fail2ban-client status sshd) | grep -P '(Currently banned:\s\d+)' -o
+echo $(fail2ban-client status sshd) | grep -P '(Currently failed:\s\d+)' -o
+echo $(fail2ban-client status sshd) | grep -P '(Total banned:\s\d+)' -o
+echo $(fail2ban-client status sshd) | grep -P '(Total failed:\s\d+)' -o
+#####################################################################
+## ufw
+echo ""
+echo -e "\e[1mUFW Status:\e[0m"
+ufw status
+#####################################################################
+echo -e "\e[1mUptime:\e[0m"
 uptime -p
 echo ""
-####################################################################
-
