@@ -16,7 +16,7 @@ This script could also be useful in combination with conky.
 Make sure you install column from bsdmainutils package.
 (apt install bsdmainutils)
 
-## fail2ban and uwf are required! 
+**fail2ban and uwf are required!**
 
 
 
