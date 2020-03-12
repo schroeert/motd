@@ -16,10 +16,10 @@ This script could also be useful in combination with conky.
 Make sure you install column from bsdmainutils package.
 (apt install bsdmainutils)
 
+## fail2ban and uwf are required! 
 
 
 
 
-
-![alt text](https://github.com/usommer/motd/blob/master/motd2.jpg)
+![alt text](https://github.com/schroeert/motd/blob/master/motd.png)
 
